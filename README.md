@@ -1,5 +1,5 @@
 # Hadoop docker image
 
-- all software under /opt
+- jdk & hadoop under /opt/
 - mount different settings to $HADOOP_PREFIX/etc/*
 
