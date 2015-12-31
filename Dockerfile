@@ -32,6 +32,7 @@ RUN cd $OPT_DIR \
     && curl -SL -k "http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz" -b "oraclelicense=a" \
     |  tar xz \
     && rm -f /opt/jdk/*src.zip \
+    && ln -s /opt/jdk1.8.0_66 /opt/jdk
     && echo '' >> /etc/profile \
     && echo '# JDK' >> /etc/profile \
     && echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile \
