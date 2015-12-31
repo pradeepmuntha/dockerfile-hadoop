@@ -65,7 +65,7 @@ RUN echo '# Hadoop' >> /etc/profile \
 # SSH keygen
 RUN cd /root && ssh-keygen -t dsa -P '' -f "/root/.ssh/id_dsa" \
     && cat /root/.ssh/id_dsa.pub >> /root/.ssh/authorized_keys \
-    && chmod 644 /root/.ssh/authorized_keys
+    && chmod 644 /root/.ssh/authorized_keys 
 
 # Daemon supervisord
 RUN mkdir -p /var/log/supervisor
@@ -75,6 +75,8 @@ ADD conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir /var/run/sshd \
     && sed -i 's/without-password/yes/g' /etc/ssh/sshd_config \
     && sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config \
+    && echo '    StrictHostKeyChecking no' >> /etc/ssh/ssh_config \
+    && echo '    UserKnownHostsFile=/dev/null' >> /etc/ssh/ssh_config \
     && echo 'SSHD: ALL' >> /etc/hosts.allow
 
 # Root password
