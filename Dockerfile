@@ -31,8 +31,8 @@ ENV PATH $PATH:$JAVA_HOME/bin
 RUN cd $OPT_DIR \
     && curl -SL -k "http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz" -b "oraclelicense=a" \
     |  tar xz \
-    && rm -f /opt/jdk/*src.zip \
     && ln -s /opt/jdk1.8.0_66 /opt/jdk \
+    && rm -f /opt/jdk/*src.zip \
     && echo '' >> /etc/profile \
     && echo '# JDK' >> /etc/profile \
     && echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile \
@@ -76,7 +76,6 @@ RUN mkdir /var/run/sshd \
     && sed -i 's/without-password/yes/g' /etc/ssh/sshd_config \
     && sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config \
     && echo '    StrictHostKeyChecking no' >> /etc/ssh/ssh_config \
-    && echo '    UserKnownHostsFile=/dev/null' >> /etc/ssh/ssh_config \
     && echo 'SSHD: ALL' >> /etc/hosts.allow
 
 # Root password
