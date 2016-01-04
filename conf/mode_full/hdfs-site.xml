@@ -28,4 +28,10 @@
         <value>file:///opt/hdfs/namenode</value>
         <description>Path on the local filesystem where the NameNode stores the namespace and transaction logs persistently.</description>
     </property>
+    
+    <property>
+        <name>dfs.namenode.heartbeat.recheck-interval</name>
+        <value>10000</value>
+        <description>This time decides the interval to check for expired datanodes.(millisecond)</description>
+    </property>
 </configuration>
